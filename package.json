@@ -1,18 +1,17 @@
 {
-  "name": "vue-awesome-swiper",
+  "name": "@espkg/vue-awesome-swiper",
   "description": "Swiper component for Vue",
-  "version": "3.1.3",
+  "version": "4.0.1",
   "license": "MIT",
   "private": false,
   "author": {
-    "name": "Surmon",
-    "email": "surmon@foxmail.com",
-    "url": "https://surmon.me"
+    "name": "Maopy",
+    "email": "maopy@qq.com"
   },
   "bugs": {
-    "url": "https://github.com/surmon-china/vue-awesome-swiper/issues"
+    "url": "https://github.com/espkg/vue-awesome-swiper/issues"
   },
-  "homepage": "https://github.com/surmon-china/vue-awesome-swiper#readme",
+  "homepage": "https://github.com/espkg/vue-awesome-swiper#readme",
   "main": "dist/vue-awesome-swiper.js",
   "unpkg": "dist/vue-awesome-swiper.js",
   "jsnext:main": "dist/vue-awesome-swiper.js",
@@ -27,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/surmon-china/vue-awesome-swiper.git"
+    "url": "https://github.com/espkg/vue-awesome-swiper.git"
   },
   "keywords": [
     "vue-awesome-swiper",
