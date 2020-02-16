@@ -10,16 +10,17 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "lib": "vue-cli-service build --dest lib --target lib --name vue-awesome-swiper ./src/packages/index.ts",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
     "pub": "git push && git push --tags && npm publish --access public"
   },
-  "main": "dist/vue-awesome-swiper.js",
-  "unpkg": "dist/vue-awesome-swiper.js",
+  "main": "lib/vue-awesome-swiper.umd.min.js",
+  "typings": "@types/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "lib/**/*",
+    "@types/*"
   ],
   "dependencies": {
     "core-js": "^3.6.4",
@@ -50,29 +51,19 @@
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.2.0",
     "lint-staged": "^9.5.0",
-    "rollup": "^1.31.1",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-terser": "^5.2.0",
-    "rollup-plugin-vue": "^5.1.6",
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",
     "typescript": "~3.7.5",
-    "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
   },
   "_id": "@espkg/vue-awesome-swiper@4.0.2",
   "bugs": {
     "url": "https://github.com/espkg/vue-awesome-swiper/issues"
   },
-  "engines": {
-    "node": ">= 4.0.0",
-    "npm": ">= 3.0.0"
-  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
   "homepage": "https://github.com/espkg/vue-awesome-swiper#readme",
-  "jsnext:main": "dist/vue-awesome-swiper.js",
   "keywords": [
     "vue-awesome-swiper",
     "vue awesome swiper",
@@ -85,7 +76,7 @@
   ],
   "license": "MIT",
   "lint-staged": {
-    "*.{js,jsx,vue,ts,tsx}": [
+    "*.{vue,ts,tsx}": [
       "vue-cli-service lint",
       "git add"
     ]
