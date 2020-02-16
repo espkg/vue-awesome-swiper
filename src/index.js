@@ -5,8 +5,7 @@
 * Github: https://github.com/surmon-china/vue-awesome-swiper
 */
 
-
-import _Swiper from 'swiper/dist/js/swiper.js'
+import _Swiper from 'swiper/js/swiper.js'
 import SlideComponent from './slide.vue'
 import SwiperComponent from './swiper.vue'
 

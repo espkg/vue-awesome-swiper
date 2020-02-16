@@ -6,7 +6,7 @@
 */
 
 // Require sources
-import _Swiper from 'swiper/dist/js/swiper.js'
+import _Swiper from 'swiper/js/swiper.js'
 import objectAssign from 'object-assign'
 
 const Swiper = window.Swiper || _Swiper
@@ -44,7 +44,6 @@ const DEFAULT_EVENTS = [
 
 // swiperDirective
 const swiperDirective = globalOptions => {
-
   // Get swiper instace name in directive
   const getInstanceName = (el, binding, vnode) => {
     let instanceName = null
@@ -61,7 +60,7 @@ const swiperDirective = globalOptions => {
   return {
 
     // Init
-    bind(el, binding, vnode) {
+    bind (el, binding, vnode) {
       const self = vnode.context
       if (el.className.indexOf('swiper-container') === -1) {
         el.className += ((el.className ? ' ' : '') + 'swiper-container')
@@ -69,7 +68,7 @@ const swiperDirective = globalOptions => {
     },
 
     // DOM inserted
-    inserted(el, binding, vnode) {
+    inserted (el, binding, vnode) {
       const self = vnode.context
       const options = binding.value
       const instanceName = getInstanceName(el, binding, vnode)
@@ -77,7 +76,7 @@ const swiperDirective = globalOptions => {
 
       // Emit event in Vue directive
       const eventEmit = (vnode, name, data) => {
-        const handlers = (vnode.data && vnode.data.on) || 
+        const handlers = (vnode.data && vnode.data.on) ||
                          (vnode.componentOptions && vnode.componentOptions.listeners)
         if (handlers && handlers[name]) handlers[name].fns(data)
       }
@@ -86,7 +85,7 @@ const swiperDirective = globalOptions => {
         const swiperOptions = objectAssign({}, globalOptions, options)
         swiper = self[instanceName] = new Swiper(el, swiperOptions)
         DEFAULT_EVENTS.forEach(eventName => {
-          swiper.on(eventName, function() {
+          swiper.on(eventName, function () {
             eventEmit(vnode, eventName, ...arguments)
             eventEmit(vnode, eventName.replace(/([A-Z])/g, '-$1'), ...arguments)
           })
@@ -97,7 +96,7 @@ const swiperDirective = globalOptions => {
     },
 
     // Parse options change
-    componentUpdated(el, binding, vnode) {
+    componentUpdated (el, binding, vnode) {
       const instanceName = getInstanceName(el, binding, vnode)
       const swiper = vnode.context[instanceName]
       if (swiper) {
@@ -109,7 +108,7 @@ const swiperDirective = globalOptions => {
     },
 
     // Destroy this directive
-    unbind(el, binding, vnode) {
+    unbind (el, binding, vnode) {
       const instanceName = getInstanceName(el, binding, vnode)
       const swiper = vnode.context[instanceName]
       if (swiper) {
@@ -125,7 +124,6 @@ const swiper = swiperDirective({})
 
 // Global swiper default options
 const install = function (Vue, globalOptions = {}) {
-
   // Mount swiper directive for Vue global
   Vue.directive('swiper', swiperDirective(globalOptions))
 }

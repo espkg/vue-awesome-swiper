@@ -1,6 +1,6 @@
 
 import Vue from 'vue/dist/vue.js'
-import Swiper from 'swiper/dist/js/swiper.js'
+import Swiper from 'swiper/js/swiper.js'
 import VueAwesomeSwiperSSR from '../../../src/ssr.js'
 import VueAwesomeSwiper, { swiper, swiperSlide, install } from '../../../src/index.js'
 
@@ -8,7 +8,6 @@ import VueAwesomeSwiper, { swiper, swiperSlide, install } from '../../../src/ind
 // console.log('--------VueAwesomeSwiperSSR', VueAwesomeSwiperSSR)
 
 describe('vue-awesome-swiper', () => {
-
   Vue.use(VueAwesomeSwiper)
   Vue.use(VueAwesomeSwiperSSR)
 
@@ -65,7 +64,7 @@ describe('vue-awesome-swiper', () => {
                     <div class="swiper-button-prev" slot="button-prev"></div>
                     <div class="swiper-button-next" slot="button-next"></div>
                   </swiper>`,
-        data() {
+        data () {
           return {
             swiperOption: {
               navigation: {
@@ -76,10 +75,10 @@ describe('vue-awesome-swiper', () => {
           }
         },
         computed: {
-          swiperComponent() {
+          swiperComponent () {
             return this.$refs.mySwiper
           },
-          swiper() {
+          swiper () {
             return this.swiperComponent.swiper
           }
         }
@@ -118,7 +117,7 @@ describe('vue-awesome-swiper', () => {
                       </swiper>
                   </div>
                   `,
-        data() {
+        data () {
           return {
             swiperOption: {
               navigation: {
@@ -126,17 +125,17 @@ describe('vue-awesome-swiper', () => {
                 prevEl: '.swiper-button-prev'
               },
               on: {
-                init() {
+                init () {
                   eventLogs.push('init')
                 },
-                slideChange() {
+                slideChange () {
                   eventLogs.push('slideChange')
-                },
+                }
               }
             }
           }
         },
-        mounted() {
+        mounted () {
           eventLogs.push('mounted')
         }
       }).$mount()
@@ -170,8 +169,8 @@ describe('vue-awesome-swiper', () => {
                   </div>
                   `,
         components: {
-          'LocalSwiper': VueAwesomeSwiper.swiper,
-          'LocalSlide': VueAwesomeSwiper.swiperSlide,
+          LocalSwiper: VueAwesomeSwiper.swiper,
+          LocalSlide: VueAwesomeSwiper.swiperSlide
         },
         data: {
           swiperOption: {
@@ -180,21 +179,21 @@ describe('vue-awesome-swiper', () => {
               prevEl: '.swiper-button-prev'
             },
             on: {
-              init() {
+              init () {
                 eventLogs.push('init')
               }
             }
           }
         },
         computed: {
-          swiperComponent() {
+          swiperComponent () {
             return this.$refs.localSwiper
           },
-          swiper() {
+          swiper () {
             return this.swiperComponent.swiper
           }
         },
-        mounted() {
+        mounted () {
           eventLogs.push('mounted')
         }
       }).$mount()
@@ -232,13 +231,13 @@ describe('vue-awesome-swiper', () => {
           slides: [1, 2, 3],
           swiperOption: {
             on: {
-              init() {
+              init () {
                 eventLogs.push('ssr/init')
               }
             }
           }
         },
-        mounted() {
+        mounted () {
           eventLogs.push('ssr/mounted')
         }
       }).$mount()
@@ -285,7 +284,7 @@ describe('vue-awesome-swiper', () => {
           }
         },
         methods: {
-          buildOptions(key) {
+          buildOptions (key) {
             const options = {}
             if (key === 'a') {
               options.pagination = { el: '.pagi-a' }
@@ -301,14 +300,14 @@ describe('vue-awesome-swiper', () => {
               options.pagination = { el: '.pagi-c' }
             }
             options.on = {
-              init() {
+              init () {
                 eventLogs.push(`ssr/init/${key}`)
               }
             }
             return options
           }
         },
-        mounted() {
+        mounted () {
           eventLogs.push('ssr/mounted')
         }
       }).$mount()
