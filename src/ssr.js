@@ -85,9 +85,9 @@ const swiperDirective = globalOptions => {
         const swiperOptions = objectAssign({}, globalOptions, options)
         swiper = self[instanceName] = new Swiper(el, swiperOptions)
         DEFAULT_EVENTS.forEach(eventName => {
-          swiper.on(eventName, function () {
-            eventEmit(vnode, eventName, ...arguments)
-            eventEmit(vnode, eventName.replace(/([A-Z])/g, '-$1'), ...arguments)
+          swiper.on(eventName, function (...args) {
+            eventEmit(vnode, eventName, ...args)
+            eventEmit(vnode, eventName.replace(/([A-Z])/g, '-$1'), ...args)
           })
         })
       }
